@@ -1,0 +1,25 @@
+<arr>
+  <array>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item value="4"/>
+    <item value="5"/>
+    <item value="6"/>
+  </array>
+</arr>
+<second>
+  <array>
+    <item>
+      <null/>
+    </item>
+    <item>
+      <false/>
+    </item>
+    <item>
+      <true/>
+    </item>
+    <item value="false"/>
+    <item value="true"/>
+  </array>
+</second>
