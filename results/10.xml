@@ -1,25 +1,25 @@
-<arr>
+<arr size="6">
   <array>
-    <item>1</item>
-    <item>2</item>
-    <item>3</item>
-    <item value="4"/>
-    <item value="5"/>
-    <item value="6"/>
+    <item index="1">1</item>
+    <item index="2">2</item>
+    <item index="3">3</item>
+    <item value="4" index="4"/>
+    <item value="5" index="5"/>
+    <item value="6" index="6"/>
   </array>
 </arr>
-<second>
+<second size="5">
   <array>
-    <item>
+    <item index="1">
       <null/>
     </item>
-    <item>
+    <item index="2">
       <false/>
     </item>
-    <item>
+    <item index="3">
       <true/>
     </item>
-    <item value="false"/>
-    <item value="true"/>
+    <item value="false" index="4"/>
+    <item value="true" index="5"/>
   </array>
 </second>
