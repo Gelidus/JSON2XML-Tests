@@ -25,6 +25,9 @@
 
 		if ($shouldBe == $is) {
 			echo "[OK] Test " . $test . " passed\n";
+		} else {
+			echo "[ERR] Test " . $test . " failed\n";
+			echo shell_exec("diff " . $testDir . "results/" . $realName . ".xml " . $tmpDir . $realName . ".xml");
 		}
 	}
 ?>
