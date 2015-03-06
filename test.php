@@ -1,5 +1,5 @@
 <?php
-	$script = "../json.php";
+	$script = "../jsn.php";
 	$testDir = getcwd() . "/";
 	$tmpDir = $testDir . "tmp/";
 
