@@ -14,7 +14,7 @@
 		$options = $opts[1];
 
 		$paths = " --input=" . $testDir . "tests/" . $jsonName . " --output=" . $tmpDir . $xmlName;
-		$cmd = "php " . $script . $paths . " " . $options; # get options from command
+		$cmd = "php -d open_basedir=\"\" " . $script . $paths . " " . $options; # get options from command
 
 		$errOutput = exec($cmd, $execOutput, $returnCode);
 
