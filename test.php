@@ -19,7 +19,7 @@
 		$errOutput = exec($cmd, $execOutput, $returnCode);
 
 		if ($returnCode != $code) { # code from commands
-			echo "[ERR] Test " . $name . "failed with code: " . $returnCode . " expected: " . $code . "\n";
+			echo "[ERR] Test " . $name . " failed with code: " . $returnCode . " expected: " . $code . "\n";
 			continue;
 		} else if ($returnCode == $code && $returnCode != 0) {
 			echo "[OK] Test " . $name . " passed\n";
