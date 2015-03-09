@@ -34,7 +34,7 @@
 		$shouldBe = preg_replace("/\n|\ |\t/", "", file_get_contents($testDir . "results/" . $xmlName));
 		$is = preg_replace("/\n|\ |\t/", "", file_get_contents($tmpDir . $xmlName));
 
-		if ($shouldBe == $is) {
+		if (strtolower($shouldBe) == strtolower($is)) {
 			echo "[OK] Test " . $name . " passed\n";
 			$good++;
 		} else {
