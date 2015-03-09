@@ -11,5 +11,13 @@
 		"8" => [0, "-h=qq -r=root --array-name=wow_array"],
 		"9" => [0, "-r=my_root --item-name=a -i"],
 		"10" => [0, "-n -a -t -l -i"],
+
+		"11" => [1, "--help -s"],
+		"12" => [1, "--help -h=_"],
+		"13" => [2, ""],
+		"14" => [2, "-r=root --h=_"],
+		"15" => [1, "--start=5"],
+		"16" => [1, "--start=abcd --index-items"],
+		"17" => [1, "--start=-10 --index-items"],
 	);
 ?>
