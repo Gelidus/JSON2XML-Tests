@@ -15,7 +15,7 @@
 		"11" => array(1, "--help -s"),
 		"12" => array(1, "--help -h=_"),
 		"13" => array(2, ""),
-		"14" => array(2, "-r=root --h=_"),
+		"14" => array(1, "-r=root --h=_"),
 		"15" => array(1, "--start=5"),
 		"16" => array(1, "--start=abcd --index-items"),
 		"17" => array(1, "--start=-10 --index-items"),
