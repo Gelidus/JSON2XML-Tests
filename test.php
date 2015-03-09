@@ -7,27 +7,33 @@
 	$results = array_diff(scandir($testDir . "results"), array('..', '.'));
 	include($testDir . "commands.php");
 
-	foreach ($tests as $test) {
-		$realName = explode(".", $test)[0]; # name without extension
+	foreach ($commands as $name => $opts) {
+		$jsonName = $name . ".json";
+		$xmlName = $name . ".xml";
+		$code = $opts[0];
+		$options = $opts[1];
 
-		$paths = " --input=" . $testDir . "tests/" . $test . " --output=" . $tmpDir . $realName . ".xml ";
-		$cmd = "php " . $script . $paths . $commands[$realName][1]; # get options from command
+		$paths = " --input=" . $testDir . "tests/" . $jsonName . " --output=" . $tmpDir . $xmlName;
+		$cmd = "php " . $script . $paths . " " . $options; # get options from command
 
-		$errOutput = exec($cmd, $execOutput, $code);
+		$errOutput = exec($cmd, $execOutput, $returnCode);
 
-		if ($code != $commands[$realName][0]) { # code from commands
-			echo "[ERR] Test " . $test . "failed with code: " . $code . " expected: " . $commands[$realName][0] . "\n";
+		if ($returnCode != $code) { # code from commands
+			echo "[ERR] Test " . $name . "failed with code: " . $returnCode . " expected: " . $code . "\n";
+			continue;
+		} else if ($returnCode == $code && $returnCode != 0) {
+			echo "[OK] Test " . $name . " passed\n";
 			continue;
 		}
 
-		$shouldBe = preg_replace("/\n|\ |\t/", "", file_get_contents($testDir . "results/" . $realName . ".xml"));
-		$is = preg_replace("/\n|\ |\t/", "", file_get_contents($tmpDir . $realName . ".xml"));
+		$shouldBe = preg_replace("/\n|\ |\t/", "", file_get_contents($testDir . "results/" . $xmlName));
+		$is = preg_replace("/\n|\ |\t/", "", file_get_contents($tmpDir . $xmlName));
 
 		if ($shouldBe == $is) {
-			echo "[OK] Test " . $test . " passed\n";
+			echo "[OK] Test " . $name . " passed\n";
 		} else {
-			echo "[ERR] Test " . $test . " failed\n";
-			echo shell_exec("diff " . $testDir . "results/" . $realName . ".xml " . $tmpDir . $realName . ".xml");
+			echo "[ERR] Test " . $name . " failed\n";
+			echo shell_exec("diff " . $testDir . "results/" . $xmlName . " " . $tmpDir . $xmlName);
 		}
 	}
 ?>
