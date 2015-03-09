@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget>
-  <debug value="on"/>
+  <debug>on</debug>
   <window>
-    <title value="Sample Konfabulator Widget"/>
-    <name value="main_window"/>
-    <width>500</width>
-    <height>500</height>
+    <title>Sample Konfabulator Widget</title>
+    <name>main_window</name>
+    <width value="500"/>
+    <height value="500"/>
   </window>
   <image>
-    <src value="Images/Sun.png"/>
-    <name value="sun1"/>
-    <hOffset>250</hOffset>
-    <vOffset>250</vOffset>
-    <alignment value="center"/>
+    <src>Images/Sun.png</src>
+    <name>sun1</name>
+    <hOffset value="250"/>
+    <vOffset value="250"/>
+    <alignment>center</alignment>
   </image>
   <text>
-    <data value="Click Here"/>
-    <size>36</size>
-    <style value="bold"/>
-    <name value="text1"/>
-    <hOffset>250</hOffset>
-    <vOffset>100</vOffset>
-    <alignment value="center"/>
-    <onMouseUp value="sun1.opacity = (sun1.opacity / 100) * 90;"/>
+    <data>Click Here</data>
+    <size value="36"/>
+    <style>bold</style>
+    <name>text1</name>
+    <hOffset value="250"/>
+    <vOffset value="100"/>
+    <alignment>center</alignment>
+    <onMouseUp>sun1.opacity = (sun1.opacity / 100) * 90;</onMouseUp>
     <markup>
       <null/>
     </markup>
   </text>
   <menuitem>
     <array size="3">
-      <item index="5">
-        <value value="New"/>
-        <onclick value="CreateNewDoc()"/>
+      <item>
+        <value>New</value>
+        <onclick>CreateNewDoc()</onclick>
       </item>
-      <item index="6">
-        <value value="Open"/>
-        <onclick value="OpenDoc()"/>
+      <item>
+        <value>Open</value>
+        <onclick>OpenDoc()</onclick>
       </item>
-      <item index="7">
-        <value value="Close"/>
-        <onclick value="CloseDoc()"/>
+      <item>
+        <value>Close</value>
+        <onclick>CloseDoc()</onclick>
       </item>
     </array>
   </menuitem>
