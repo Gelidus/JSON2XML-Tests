@@ -23,5 +23,11 @@
 		"18" => array(4, ""),
 		"19" => array(4, "-h=_ -l -i"),
 		"20" => array(4, "-r=root"),
+
+		"21" => array(50, "-r=\"<root>\""),
+		"22" => array(50, "-r=\"&name\""),
+		"23" => array(50, "-r=root --array-name=\"<array>\""),
+		"24" => array(50, "-r=root --item-name=-and"),
+		"25" => array(51, "-h=-"),
 	);
 ?>
