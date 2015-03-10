@@ -7,6 +7,8 @@
 	$results = array_diff(scandir($testDir . "results"), array('..', '.'));
 	include($testDir . "commands.php");
 
+	$cleanup = $argv[1] == "clean";
+
 	$total = count($commands);
 	$good = 0; $bad = 0;
 
@@ -41,6 +43,10 @@
 			echo "[ERR] Test " . $name . " failed\n";
 			$bad++;
 			echo shell_exec("diff " . $testDir . "results/" . $xmlName . " " . $tmpDir . $xmlName);
+		}
+
+		if ($cleanup) {
+			unlink($tmpDir . $xmlName);
 		}
 	}
 

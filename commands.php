@@ -34,12 +34,16 @@
 		"28" => array(51, "-h=21"),
 		"29" => array(51, "-h=\"<>\""),
 		"30" => array(51, "-h=\"*0*\""),
+		
 		"31" => array(0, "-h=\"@@\" -s -i"),
-
 		"32" => array(0, "-s"),
 		"33" => array(0, "-s -i"),
 		"34" => array(0, "-s -l -a"),
 		"35" => array(0, "-i -l -a -t --start=5"),
-		"36" => array(0, "-s -i -l -r=root -a")
+		"36" => array(0, "-s -i -l -r=root -a"),
+		"37" => array(0, "-a -h=_"),
+		"38" => array(0, "-t -i -h=qq"),
+		"39" => array(0, "-i -t --start=10 -h=&"),
+		"40" => array(0, "-s -i -r=_root_ -h=\":\"")
 	);
 ?>
