@@ -47,13 +47,15 @@
     $shouldBe = new SimpleXMLElement($shouldBe);
     $is = new SimpleXMLElement($is);
 
-    if (xml_is_equal($shouldBe, $is)) {
+    $result = xml_is_equal($shouldBe, $is);
+
+    if ($result === true) {
       echo "[OK] Test " . $name . " passed\n";
       $good++;
     } else {
       echo "[ERR] Test " . $name . " failed\n";
+      echo $result . "\n";
       $bad++;
-      echo shell_exec("diff " . $testDir . "results/" . $xmlName . " " . $tmpDir . $xmlName);
     }
 
     if ($cleanup) {
