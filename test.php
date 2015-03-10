@@ -1,7 +1,6 @@
 <?php
-  include("xmldiff.php");
-
-  error_reporting(0);
+  //error_reporting(0);
+  include("XMLdiff/src/XmlDiff.php");
 
   $script = "../jsn.php";
   $testDir = getcwd() . "/";
@@ -11,7 +10,7 @@
   $results = array_diff(scandir($testDir . "results"), array('..', '.'));
   include($testDir . "commands.php");
 
-  $cleanup = $argv[1] == "clean";
+  $cleanup = isset($argv[1]) && $argv[1] == "clean";
 
   $total = count($commands);
   $good = 0; $bad = 0;
@@ -37,24 +36,24 @@
       continue;
     }
 
-
     $shouldBe = file_get_contents($testDir . "results/" . $xmlName);
     $is = file_get_contents($tmpDir . $xmlName);
 
     $shouldBe = "<__ROOT__>" . str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", "", $shouldBe) . "</__ROOT__>" ;
     $is = "<__ROOT__>" . str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", "", $is) . "</__ROOT__>";
 
-    $shouldBe = new SimpleXMLElement($shouldBe);
-    $is = new SimpleXMLElement($is);
+    $shouldBe = new DOMDocument($shouldBe);
+    $is = new DOMDocument($is);
 
-    $result = xml_is_equal($shouldBe, $is);
+    $diff = new XmlDiff($shouldBe, $is);
 
-    if ($result === true) {
+    $result = $diff->diff();
+    if ($result->__toString() == "") {
       echo "[OK] Test " . $name . " passed\n";
       $good++;
     } else {
       echo "[ERR] Test " . $name . " failed\n";
-      echo $result . "\n";
+      echo $result->__toString() . "\n";
       $bad++;
     }
 
