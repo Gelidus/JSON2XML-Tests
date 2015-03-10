@@ -1,4 +1,8 @@
 <?php
+  include("xmldiff.php");
+
+  error_reporting(0);
+
   $script = "../jsn.php";
   $testDir = getcwd() . "/";
   $tmpDir = $testDir . "tmp/";
@@ -33,10 +37,17 @@
       continue;
     }
 
-    $shouldBe = preg_replace("/\n|\ |\t/", "", file_get_contents($testDir . "results/" . $xmlName));
-    $is = preg_replace("/\n|\ |\t/", "", file_get_contents($tmpDir . $xmlName));
 
-    if (strtolower($shouldBe) == strtolower($is)) {
+    $shouldBe = file_get_contents($testDir . "results/" . $xmlName);
+    $is = file_get_contents($tmpDir . $xmlName);
+
+    $shouldBe = "<__ROOT__>" . str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", "", $shouldBe) . "</__ROOT__>" ;
+    $is = "<__ROOT__>" . str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", "", $is) . "</__ROOT__>";
+
+    $shouldBe = new SimpleXMLElement($shouldBe);
+    $is = new SimpleXMLElement($is);
+
+    if (xml_is_equal($shouldBe, $is)) {
       echo "[OK] Test " . $name . " passed\n";
       $good++;
     } else {
