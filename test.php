@@ -1,6 +1,10 @@
 <?php
-  //error_reporting(0);
-  include("XMLdiff/src/XmlDiff.php");
+
+  function compareXml($first, $second) {
+
+  }
+
+  error_reporting(0);
 
   $script = "../jsn.php";
   $testDir = getcwd() . "/";
@@ -39,21 +43,23 @@
     $shouldBe = file_get_contents($testDir . "results/" . $xmlName);
     $is = file_get_contents($tmpDir . $xmlName);
 
-    $shouldBe = "<__ROOT__>" . str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", "", $shouldBe) . "</__ROOT__>" ;
-    $is = "<__ROOT__>" . str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", "", $is) . "</__ROOT__>";
+    $shouldBeDoc = new DOMDocument();
+    $isDoc = new DOMDocument();
 
-    $shouldBe = new DOMDocument($shouldBe);
-    $is = new DOMDocument($is);
+    $shouldBeDoc->loadXML("<__ROOT__>" . str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", "", $shouldBe) . "</__ROOT__>");
+    $isDoc->loadXML("<__ROOT__>" . str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", "", $is) . "</__ROOT__>");
 
-    $diff = new XmlDiff($shouldBe, $is);
+    $shouldBe = json_decode(json_encode((array)simplexml_import_dom($shouldBeDoc)), true);
+    $is = json_decode(json_encode((array)simplexml_import_dom($isDoc)), true);
 
-    $result = $diff->diff();
-    if ($result->__toString() == "") {
+    $delta = array_diff_assoc($shouldBe, $is);
+
+    if (empty($delta)) {
       echo "[OK] Test " . $name . " passed\n";
       $good++;
     } else {
       echo "[ERR] Test " . $name . " failed\n";
-      echo $result->__toString() . "\n";
+      var_dump($delta);
       $bad++;
     }
 
