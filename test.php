@@ -1,9 +1,4 @@
 <?php
-
-  function compareXml($first, $second) {
-
-  }
-
   error_reporting(0);
 
   $script = "../jsn.php";
