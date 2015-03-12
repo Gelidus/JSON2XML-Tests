@@ -41,8 +41,8 @@
     $shouldBeDoc = new DOMDocument();
     $isDoc = new DOMDocument();
 
-    $shouldBeDoc->loadXML("<__ROOT__>" . str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", "", $shouldBe) . "</__ROOT__>");
-    $isDoc->loadXML("<__ROOT__>" . str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", "", $is) . "</__ROOT__>");
+    $shouldBeDoc->loadXML("<__ROOT__>" . str_replace(array("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", "\n"), "", $shouldBe) . "</__ROOT__>");
+    $isDoc->loadXML("<__ROOT__>" . str_replace(array("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", "\n"), "", $is) . "</__ROOT__>");
 
     $shouldBe = json_decode(json_encode((array)simplexml_import_dom($shouldBeDoc)), true);
     $is = json_decode(json_encode((array)simplexml_import_dom($isDoc)), true);
