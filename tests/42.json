@@ -1,7 +1,7 @@
 {
-  "-widget": {
-    ".debug": "on",
-    "0window": {
+  "-wi-dget": {
+    ".de.bug": "on",
+    "0wi0ndow": {
         "title": "Sample Konfabulator Widget",
         "name": "main_window",
         "width": 500,
