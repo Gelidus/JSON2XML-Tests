@@ -1,4 +1,9 @@
 <?php
+
+  function diffArrays($original, $compare) {
+    
+  }
+
   error_reporting(0);
 
   $script = "../jsn.php";
