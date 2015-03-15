@@ -1,8 +1,24 @@
 <?php
 
-  function diffArrays($original, $compare) {
-    
-  }
+  function diffArrays($aArray1, $aArray2) {
+    $aReturn = array();
+
+    foreach ($aArray1 as $mKey => $mValue) {
+      if (array_key_exists($mKey, $aArray2)) {
+        if (is_array($mValue)) {
+          $aRecursiveDiff = diffArrays  ($mValue, $aArray2[$mKey]);
+          if (count($aRecursiveDiff)) { $aReturn[$mKey] = $aRecursiveDiff; }
+        } else {
+          if ($mValue != $aArray2[$mKey]) {
+            $aReturn[$mKey] = $mValue;
+          }
+        }
+      } else {
+        $aReturn[$mKey] = $mValue;
+      }
+    }
+    return $aReturn;
+  } 
 
   error_reporting(0);
 
@@ -52,7 +68,7 @@
     $shouldBe = json_decode(json_encode((array)simplexml_import_dom($shouldBeDoc)), true);
     $is = json_decode(json_encode((array)simplexml_import_dom($isDoc)), true);
 
-    $delta = array_diff_assoc($shouldBe, $is);
+    $delta = diffArrays($shouldBe, $is);
 
     if (empty($delta)) {
       echo "[OK] Test " . $name . " passed\n";
