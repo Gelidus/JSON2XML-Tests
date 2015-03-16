@@ -50,6 +50,7 @@
 
     "43" => array(0, "-s -i"),
     "44" => array(0, "-l -r=root -h=_"),
+    "45" => array(0, "-i")
   );
 
   $extendCommands = array(
