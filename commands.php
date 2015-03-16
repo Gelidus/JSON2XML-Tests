@@ -51,4 +51,10 @@
     "43" => array(0, "-s -i"),
     "44" => array(0, "-l -r=root -h=_"),
   );
+
+  $extendCommands = array(
+    "100" => array(0, "--index-items --padding"),
+    "101" => array(1, "--padding"),
+    "102" => array(0, "--index-items --start=9 --padding"),
+  );
 ?>

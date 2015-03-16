@@ -18,7 +18,7 @@
       }
     }
     return $aReturn;
-  } 
+  }
 
   error_reporting(0);
 
@@ -26,11 +26,15 @@
   $testDir = getcwd() . "/";
   $tmpDir = $testDir . "tmp/";
 
+  $consoleOptions = getopt("", array("clean", "extend"));
+
   $tests = array_diff(scandir($testDir . "tests"), array('..', '.'));
   $results = array_diff(scandir($testDir . "results"), array('..', '.'));
   include($testDir . "commands.php");
 
-  $cleanup = isset($argv[1]) && $argv[1] == "clean";
+  if (isset($consoleOptions["extend"])) {
+    $commands = $commands + $extendCommands;
+  }
 
   $total = count($commands);
   $good = 0; $bad = 0;
@@ -79,7 +83,7 @@
       $bad++;
     }
 
-    if ($cleanup) {
+    if (isset($consoleOptions["clean"])) {
       unlink($tmpDir . $xmlName);
     }
   }
