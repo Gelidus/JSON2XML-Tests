@@ -6,7 +6,10 @@ Tests for JSON2XML project on fit vutbr
 - `cd JSON2XML-Tests/`
 - `php test.php`
 - on Merlin server `php -d openbasedir="" test.php`
-- for automatic cleanup of tmp dir after run, use `php test.php clean`
+
+##Options:
+--clean - automatically clean tmp folder after test
+--extend - starts extended tests
 
 ##Outputs:
 - /tmp - outputs from your script
