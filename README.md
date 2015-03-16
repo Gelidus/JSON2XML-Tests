@@ -8,8 +8,8 @@ Tests for JSON2XML project on fit vutbr
 - on Merlin server `php -d openbasedir="" test.php`
 
 ##Options:
---clean - automatically clean tmp folder after test
---extend - starts extended tests
+- --clean - automatically clean tmp folder after test
+- --extend - starts extended tests
 
 ##Outputs:
 - /tmp - outputs from your script
