@@ -39,6 +39,7 @@
   $total = count($commands);
   $good = 0; $bad = 0;
 
+  $time_start = microtime(true);  
   foreach ($commands as $name => $opts) {
     $jsonName = $name . ".json";
     $xmlName = $name . ".xml";
@@ -87,6 +88,7 @@
       unlink($tmpDir . $xmlName);
     }
   }
+  $diffTime = microtime(true) - $time_start;
 
-  echo "\nTotal passed/errors >> " . $good . "/" . $bad . " <<\n";
+  echo "\nTotal passed/errors >> " . $good . "/" . $bad . " << in " . $diffTime . " seconds\n";
 ?>
