@@ -57,12 +57,13 @@
     
     "49" => array(0, "-c"),
     "50" => array(0, "-c -i -s"),
-    "51" => array(0, "-c -h=SUBS")
+    "51" => array(0, "-c -h=SUBS"),
+    "52" => array(0, "")
   );
 
   $extendCommands = array(
     "100" => array(0, "--index-items --padding"),
     "101" => array(1, "--padding"),
-    "102" => array(0, "--index-items --start=9 --padding"),
+    "102" => array(0, "--index-items --start=9 --padding")
   );
 ?>
