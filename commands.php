@@ -53,7 +53,11 @@
     "45" => array(0, "-i"),
     "46" => array(0, "-a -t -r=root"),
     "47" => array(0, "-i -s -r=root -a"),
-    "48" => array(0, "-h=_ -s -l --index-items --start=33 -a")
+    "48" => array(0, "-h=_ -s -l --index-items --start=33 -a"),
+    
+    "49" => array(0, "-c"),
+    "50" => array(0, "-c -i -s"),
+    "51" => array(0, "-c -h=SUBS")
   );
 
   $extendCommands = array(
