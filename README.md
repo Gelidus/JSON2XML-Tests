@@ -5,7 +5,7 @@ Tests for JSON2XML project on fit vutbr
 - clone repo into your project folder
 - `cd JSON2XML-Tests/`
 - `php test.php`
-- on Merlin server `php -d openbasedir="" test.php`
+- on Merlin server `php -d open_basedir="" test.php`
 
 ##Options:
 - --clean - automatically clean tmp folder after test
